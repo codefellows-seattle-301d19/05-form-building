@@ -79,6 +79,7 @@ articleView.initNewArticlePage = function() {
 
   // TODO: Add an event handler to update the preview and the export field with info
   // from the article that WOULD BE created if any inputs change.
+  $('#article-info').on('change', this.create);
 
 };
 
@@ -94,7 +95,7 @@ articleView.create = function() {
     author: $('[name="article-author"]').val(),
     authorUrl: $('[name="author-url"]').val(),
     category: $('[name="category"]').val(),
-    publishedOn: $('[name="draft"]').attr('checked') ? 'draft' : new Date().toString() // condensed version of below
+    publishedOn: $('[name="draft"]').attr('checked') ? null : new Date().toString() // condensed version of below
   };
   // if ($('[name="draft"]').attr('checked')) {
   //   articleData.publishedOn = 'draft';
@@ -103,9 +104,20 @@ articleView.create = function() {
   // }
   var newArticle = new Article(articleData);
 
-
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 
+  var renderFunc = Handlebars.compile($('#preview-template').html());
+
+  // THIS AND THE NEXT BIT OF CODE ARE BOTH SLIGHTLY BROKEN. FIX THEM!
+  // calculate how many days ago this article was published
+  newArticle.daysAgo = parseInt((new Date() - new Date(newArticle.publishedOn))/60/60/24/1000);
+
+  // set the publication status
+  newArticle.publishStatus = newArticle.publishedOn ? `published ${newArticle.daysAgo} days ago` : '(draft)';
+
+  // render the template with the proper data
+  var renderedHtml = renderFunc(newArticle);
+  $('#articles').append(renderedHtml);
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each();
@@ -114,6 +126,7 @@ articleView.create = function() {
 
 };
 
+articleView.initNewArticlePage();
 
 articleView.initIndexPage = function() {
   articleView.populateFilters();
