@@ -41,6 +41,31 @@
                    4. Author's URL
                    5. Article category
                    6. Some way to know if this article is a draft or is published -->
+        <form id="article-info">
+          <ul>
+            <li>
+              <input type="text" placeholder="Article title" name="article-title"  required/>
+            </li>
+            <li>
+              <textarea placeholder="Input body text" name="article-body" required></textarea>
+            </li>
+            <li>
+              <input type="text" name="article-author" placeholder="Article author" required/>
+            </li>
+            <li>
+              <input type="url" name="author-url" placeholder="Author URL" required/>
+            </li>
+            <li>
+              <input type="text" name="category" placeholder="Article category"  required/>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="draft"/>
+                Save as draft
+              </label>
+            </li>
+          </ul>
+        </form>
       </section>
 
       <section id="articles" class="tab-content">

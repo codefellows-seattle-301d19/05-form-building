@@ -85,9 +85,23 @@ articleView.initNewArticlePage = function() {
 articleView.create = function() {
   // TODO: Set up a var to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
-
+  $('#articles').html('');
 
   // TODO: Instantiate an article based on what's in the form fields:
+  var articleData = {
+    title: $('[name="article-title"]').val(),
+    body: $('[name="article-body"]').val(),
+    author: $('[name="article-author"]').val(),
+    authorUrl: $('[name="author-url"]').val(),
+    category: $('[name="category"]').val(),
+    publishedOn: $('[name="draft"]').attr('checked') ? 'draft' : new Date().toString() // condensed version of below
+  };
+  // if ($('[name="draft"]').attr('checked')) {
+  //   articleData.publishedOn = 'draft';
+  // } else {
+  //   articleData.publishedOn = new Date().toString();
+  // }
+  var newArticle = new Article(articleData);
 
 
   // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
