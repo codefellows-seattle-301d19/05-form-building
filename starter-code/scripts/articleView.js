@@ -77,7 +77,8 @@ articleView.initNewArticlePage = function() {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field if any inputs change.
+  // TODO: Add an event handler to update the preview and the export field with info
+  // from the article that WOULD BE created if any inputs change.
 
 };
 
