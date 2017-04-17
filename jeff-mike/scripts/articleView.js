@@ -69,17 +69,12 @@ articleView.setTeasers = function() {
 articleView.initNewArticlePage = function() {
   $('.tab-content').show();
 
-  var articleJson = $('.article-json').val();
-  // articleJson ? articleJson.show() : articleJson.hide();
-  // TODO: The new articles we create will be copy/pasted into our source data file.
-  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
-
   $('.article-json').on('focus', function(){
     this.select();
   });
+  $('.article-json').hide();
 
   $('#article-info').on('change', this.create);
-
 };
 
 articleView.create = function() {
@@ -91,28 +86,24 @@ articleView.create = function() {
     author: $('[name="article-author"]').val(),
     authorUrl: $('[name="author-url"]').val(),
     category: $('[name="category"]').val(),
-    publishedOn: $('[name="draft"]').attr('checked') ? null : new Date().toString() // condensed version of below
+    publishedOn: $('[name="draft"]').attr('checked') ? null : new Date().toString()
   };
   var newArticle = new Article(articleData);
 
   var renderFunc = Handlebars.compile($('#preview-template').html());
 
-  // THIS AND THE NEXT BIT OF CODE ARE BOTH SLIGHTLY BROKEN. FIX THEM!
-  // calculate how many days ago this article was published
   newArticle.daysAgo = parseInt((new Date() - new Date(newArticle.publishedOn))/60/60/24/1000);
 
-  // set the publication status
   newArticle.publishStatus = newArticle.publishedOn ? `published ${newArticle.daysAgo} days ago` : '(draft)';
 
-  // render the template with the proper data
   var renderedHtml = renderFunc(newArticle);
   $('#articles').append(renderedHtml);
 
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block)
+  });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  // $('#article-export a div').html(' ');
+  $('.article-json').show();
   $('.article-json').val(JSON.stringify(articleData) + ',');
 };
 

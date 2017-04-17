@@ -45,4 +45,33 @@ a:visited {
 
 /*FORM STYLES
 =======================================*/
-/*TODO: Add the CSS needed to style the form*/
+
+#article-info {
+  width: 50%;
+
+}
+
+#article-info ul {
+  padding: 0;
+  margin: 0;
+}
+
+#article-info li {
+  list-style: none;
+}
+
+#article-info input,#article-info textarea {
+  margin: 1% 0;
+  width: 75%;
+  background: black;
+  color: white;
+}
+
+#article-info label {
+  width: auto;
+  float: left;
+}
+
+#article-info label input {
+  width: auto;
+}
