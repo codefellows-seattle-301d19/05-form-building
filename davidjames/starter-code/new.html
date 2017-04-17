@@ -9,9 +9,8 @@
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
-    <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+    <script>hljs.initHighlightingOnLoad();</script>
     <script id="preview-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
         <header>
@@ -26,7 +25,7 @@
       </article>
     </script>
     <script id="export-template" type="text/x-handlebars-template">
-      <textarea name="name" rows="8" cols="80">
+      <pre><code class="javascript">
         {
           title:       '{{title}}',
           category:    '{{category}}',
@@ -35,7 +34,7 @@
           publishedOn: '{{publishedOn}}',
           body:        '{{body}}'
         }
-      </textarea>
+      </code></pre>
     </script>
     </head>
   <body>
@@ -100,12 +99,12 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
-    <!-- NOTE (stretch goal): Include script tags for 3rd party libraries to enable Markdown rendering and code syntax highlighting. If we are not using a CDN and instead choose to store these scripts with our project, make sure to put them into an appropriate location in the 'vendor' directory. Keep in mind that if we want these features to render properly on our main blog page (index.html) that we'll need to add those scripts over there, too. -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
     <script src="scripts/blogArticles.js"></script>
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
     <script>
-
       articleView.initNewArticlePage();
     </script>
   </body>

@@ -99,13 +99,13 @@ articleView.create = function() {
   $('#articles').append(renderedHtml);
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 
   var exportTemplate = Handlebars.compile($('#export-template').html());
   $('#article-export').append(exportTemplate(articleData))
 };
-
-articleView.initNewArticlePage();
 
 articleView.initIndexPage = function() {
   articleView.populateFilters();
