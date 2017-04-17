@@ -25,6 +25,21 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
+
+    <script id="export-template" type="text/x-handlebars-template">
+      <textarea name="name" rows="8" cols="80">
+        {
+          title:       '{{title}}',
+          category:    '{{category}}',
+          author:      '{{author}}',
+          authorUrl:   '{{authorUrl}}',
+          publishedOn: '{{publishedOn}}',
+          body:        '{{body}}'
+        }
+      </textarea>
+    </script>
+
+
     </head>
   <body>
     <header class="site-header clearfix">
@@ -101,9 +116,8 @@
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
     <script>
-      // TODO: We will need to call a function here to initialize the behaviors on this page, once we get them built out. Why?
-      // (Look at the bottom of index.html as a reference. Since we are now using our JS on two different HTML pages that have different needs as to what parts of the code they utilize, we need to build a function that inializes each page.)
-      //  Hint: Look in articleView.js for a function that does this.
+
+      articleView.initNewArticlePage();
     </script>
   </body>
 </html>
