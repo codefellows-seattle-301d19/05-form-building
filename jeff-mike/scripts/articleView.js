@@ -110,7 +110,8 @@ articleView.create = function() {
   $('pre code').each();
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#article-export').append(JSON.stringify(articleData));
+  $('#article-export a div').html(' ');
+  $('#article-export a div').append(JSON.stringify(articleData));
 };
 
 articleView.initNewArticlePage();
