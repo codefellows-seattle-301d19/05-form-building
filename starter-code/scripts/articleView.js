@@ -68,7 +68,7 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-
+  $('tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -77,6 +77,7 @@ articleView.initNewArticlePage = function() {
     this.select();
   });
 
+  $('#article-json').hide();
   // TODO: Add an event handler to update the preview and the export field with info
   // from the article that WOULD BE created if any inputs change.
   $('#article-info').on('change', this.create);
@@ -120,10 +121,13 @@ articleView.create = function() {
   $('#articles').append(renderedHtml);
 
   // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  $('#article-json').show();
+  $('#article-json').val(`${JSON.stringify(newArticle)}` + ',');
 };
 
 articleView.initNewArticlePage();
