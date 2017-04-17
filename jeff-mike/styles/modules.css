@@ -52,8 +52,16 @@
   text-decoration: none;
 }
 
-/*TODO: Add CSS for the "article-export" portion of our new page*/
+#article-export {
+  width: 100%;
+  float: left;
+}
 
+#article-export textarea {
+  width: 75%;
+  background: black;
+  color: white;
+}
 
 @media only screen and (min-width: 640px) {
   .icon-menu {
