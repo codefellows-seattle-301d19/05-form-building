@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lab 5</title>
+    <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/icons.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/modules.css">
+    <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
+    <link>
+    <script id="preview-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}}</a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body">{{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
+    </head>
+  <body>
+    <header class="site-header clearfix">
+      <section class="heading-group-h1 pull-left">
+        <h1>
+          Kilovolt Blog!
+        </h1>
+        <h2>The shocking power of static pages</h2>
+      </section>
+      <nav class="main-nav">
+        <div class="icon-menu"></div>
+        <ul>
+          <li class="tab" data-content="write"><a href="#" class="icon-home"> Write</a></li>
+          <li class="tab" data-content="articles"><a href="#" class="icon-home"> Preview</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="clearfix">
+
+      <section id="write" class="tab-content">
+        <h1>Create New Article</h1>
+        <form id="article-info">
+          <ul>
+            <li>
+              <input type="text" placeholder="Article title" name="article-title"  required/>
+            </li>
+            <li>
+              <textarea placeholder="Input body text" name="article-body" required></textarea>
+            </li>
+            <li>
+              <input type="text" name="article-author" placeholder="Article author" required/>
+            </li>
+            <li>
+              <input type="url" name="author-url" placeholder="Author URL" required/>
+            </li>
+            <li>
+              <input type="text" name="category" placeholder="Article category"  required/>
+            </li>
+            <li>
+              <label>
+                <input type="checkbox" name="draft"/>
+                Save as draft
+              </label>
+            </li>
+          </ul>
+        </form>
+      </section>
+
+      <section id="articles" class="tab-content"></section>
+
+      <section id="article-export">
+        <div id="article-json">
+
+        </div>
+        <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a short preview of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
+      </section>
+
+    </main>
+    <footer>
+      &copy; 2017 Code Fellows | Static Blog | Happy Ipsum!
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
+    <script src="scripts/blogArticles.js"></script>
+    <script src="scripts/article.js"></script>
+    <script src="scripts/articleView.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/languages/go.min.js"></script> -->
+    <script>
+      articleView.initNewArticlePage();
+    </script>
+  </body>
+</html>
