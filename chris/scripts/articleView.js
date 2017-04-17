@@ -58,7 +58,6 @@ articleView.handleMainNav = function() {
 
 articleView.setTeasers = function() {
   $('.article-body *:nth-of-type(n+2)').hide();
-
   $('#articles').on('click', 'a.read-on', function(e) {
     e.preventDefault();
     $(this).parent().find('*').fadeIn();
@@ -68,9 +67,6 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   $('.tab-content').show();
-
-  // TODO: The new articles we create will be copy/pasted into our source data file.
-  // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
   $('#article-export').hide();
   $('#article-json').on('focus', function(){
     this.select();
@@ -87,27 +83,17 @@ articleView.create = function() {
     author: $('[name="article-author"]').val(),
     authorUrl: $('[name="author-url"]').val(),
     category: $('[name="category"]').val(),
-    publishedOn: $('[name="draft"]').attr('checked') ? null : new Date().toString() // condensed version of below
+    publishedOn: $('[name="draft"]').attr('checked') ? null : new Date().toString()
   };
   var newArticle = new Article(articleData);
   var renderFunc = Handlebars.compile($('#preview-template').html());
-
-  // THIS AND THE NEXT BIT OF CODE ARE BOTH SLIGHTLY BROKEN. FIX THEM!
-  // calculate how many days ago this article was published
   newArticle.daysAgo = parseInt((new Date() - new Date(newArticle.publishedOn))/60/60/24/1000);
-
-  // set the publication status
   newArticle.publishStatus = newArticle.publishedOn ? `published ${newArticle.daysAgo} days ago` : '(draft)';
-
-  // render the template with the proper data
   var renderedHtml = renderFunc(newArticle);
   $('#articles').append(renderedHtml);
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
-
-
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#article-export').show();
   $('#article-json').html(JSON.stringify(newArticle) + ',');
 };
