@@ -69,10 +69,12 @@ articleView.setTeasers = function() {
 articleView.initNewArticlePage = function() {
   $('.tab-content').show();
 
+  var articleJson = $('.article-json').val();
+  // articleJson ? articleJson.show() : articleJson.hide();
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
 
-  $('#article-json').on('focus', function(){
+  $('.article-json').on('focus', function(){
     this.select();
   });
 
@@ -110,8 +112,8 @@ articleView.create = function() {
   $('pre code').each();
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-  $('#article-export a div').html(' ');
-  $('#article-export a div').append(JSON.stringify(articleData));
+  // $('#article-export a div').html(' ');
+  $('.article-json').val(JSON.stringify(articleData) + ',');
 };
 
 articleView.initNewArticlePage();
