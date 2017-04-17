@@ -67,8 +67,7 @@ articleView.setTeasers = function() {
 };
 
 articleView.initNewArticlePage = function() {
-  // TODO: Ensure the main .tab-content area is revealed. We might add more tabs later or otherwise edit the tab navigation.
-
+  $('.tab-content').show();
 
   // TODO: The new articles we create will be copy/pasted into our source data file.
   // Set up this "export" functionality. We can hide it for now, and show it once we have data to export.
@@ -77,18 +76,13 @@ articleView.initNewArticlePage = function() {
     this.select();
   });
 
-  // TODO: Add an event handler to update the preview and the export field with info
-  // from the article that WOULD BE created if any inputs change.
   $('#article-info').on('change', this.create);
 
 };
 
 articleView.create = function() {
-  // TODO: Set up a var to hold the new article we are creating.
-  // Clear out the #articles element, so we can put in the updated preview
   $('#articles').html('');
 
-  // TODO: Instantiate an article based on what's in the form fields:
   var articleData = {
     title: $('[name="article-title"]').val(),
     body: $('[name="article-body"]').val(),
@@ -97,14 +91,7 @@ articleView.create = function() {
     category: $('[name="category"]').val(),
     publishedOn: $('[name="draft"]').attr('checked') ? null : new Date().toString() // condensed version of below
   };
-  // if ($('[name="draft"]').attr('checked')) {
-  //   articleData.publishedOn = 'draft';
-  // } else {
-  //   articleData.publishedOn = new Date().toString();
-  // }
   var newArticle = new Article(articleData);
-
-  // TODO: Use our interface to the Handblebars template to put this new article into the DOM:
 
   var renderFunc = Handlebars.compile($('#preview-template').html());
 
@@ -123,7 +110,7 @@ articleView.create = function() {
   $('pre code').each();
 
   // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
-
+  $('#article-export').append(JSON.stringify(articleData));
 };
 
 articleView.initNewArticlePage();
