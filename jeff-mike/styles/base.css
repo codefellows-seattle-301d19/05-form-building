@@ -1,0 +1,77 @@
+img {
+  max-width: 100%;
+}
+
+body {
+  line-height: 1.5;
+  font-size: 100%;
+  color: #313131;
+}
+
+main {
+  margin: auto;
+  width: 90%;
+}
+
+hr {
+  margin: 1em;
+  width: 80%;
+}
+
+/*TEXT STYLES
+=======================================*/
+p {
+  font-size: 1em;
+}
+
+address {
+  display: inline-block;
+}
+
+/*LINK STYLES
+=======================================*/
+
+a, a:link, a:active {
+  text-decoration: none;
+  color: #777;
+}
+
+a:hover, a:focus {
+  color: #29506D;
+}
+
+a:visited {
+}
+
+/*FORM STYLES
+=======================================*/
+
+#article-info {
+  width: 50%;
+
+}
+
+#article-info ul {
+  padding: 0;
+  margin: 0;
+}
+
+#article-info li {
+  list-style: none;
+}
+
+#article-info input,#article-info textarea {
+  margin: 1% 0;
+  width: 75%;
+  background: black;
+  color: white;
+}
+
+#article-info label {
+  width: auto;
+  float: left;
+}
+
+#article-info label input {
+  width: auto;
+}
