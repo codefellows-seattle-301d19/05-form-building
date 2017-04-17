@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
     <!-- NOTE (stretch goal): To fully incorporate the highlighting library "hljs" we need to fill the empty link tag below to refer to a CSS file that will handle our text highlighting -->
-    <link>
-    <!-- TODO: We want our new article form to be able to display a preview of the article that is being entered. Thus, we need code here that will recreate the same structure of our other articles. What do you think we need to add here? -->
     <script id="preview-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
         <header>
@@ -25,7 +23,6 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
-
     <script id="export-template" type="text/x-handlebars-template">
       <textarea name="name" rows="8" cols="80">
         {
@@ -38,8 +35,6 @@
         }
       </textarea>
     </script>
-
-
     </head>
   <body>
     <header class="site-header clearfix">
@@ -62,13 +57,6 @@
 
       <section id="write" class="tab-content">
         <h1>Create New Article</h1>
-        <!-- TODO: Set up a form to accept user input for a new blog article. Remember that we need:
-                   1. Article title
-                   2. Article body
-                   3. Article author
-                   4. Author's URL
-                   5. Article category
-                   6. Some way to know if this article is a draft or is published -->
         <form id="article-info">
           <ul>
             <li>
@@ -101,7 +89,6 @@
       </section>
 
       <section id="article-export">
-        <!-- TODO: Refer to the preview image to see what we will be building here: we need a container of some kind to hold a JSON export of our article. Ideally this container would show only a short preview of the JSON and also be clickable to allow easy selection of the text it holds. What kind of element could we use for this? -->
       </section>
 
     </main>

@@ -85,6 +85,7 @@ articleView.initNewArticlePage = function() {
 
 articleView.create = function() {
   $('#articles').html('');
+  $('#article-export').html('');
   var articleData = {
     title: $('[name="article-title"]').val(),
     body: $('[name="article-body"]').val(),
