@@ -68,7 +68,7 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   $('.tab-content').show();
-  $('#article-export').on('click', function(){
+  $('#article-json').on('focus', function(){
     $(this).select();
   });
   $('#article-info').on('change', this.create);
@@ -76,7 +76,7 @@ articleView.initNewArticlePage = function() {
 
 articleView.create = function() {
   $('#articles').html('');
-  $('#article-export').html('');
+  $('#article-json').val('');
   var articleData = {
     title: $('[name="article-title"]').val(),
     body: $('[name="article-body"]').val(),
@@ -103,7 +103,7 @@ articleView.create = function() {
   });
 
   var exportTemplate = Handlebars.compile($('#export-template').html());
-  $('#article-export').append(exportTemplate(articleData))
+  $('#article-json').val(exportTemplate(articleData))
 };
 
 articleView.initIndexPage = function() {

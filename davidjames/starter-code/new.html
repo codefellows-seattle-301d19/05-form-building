@@ -24,16 +24,14 @@
       </article>
     </script>
     <script id="export-template" type="text/x-handlebars-template">
-      <pre><code class="javascript">
-        {
-          title:       '{{title}}',
-          category:    '{{category}}',
-          author:      '{{author}}',
-          authorUrl:   '{{authorUrl}}',
-          publishedOn: '{{publishedOn}}',
-          body:        '{{body}}'
-        }
-      </code></pre>
+      {
+        title:       '{{title}}',
+        category:    '{{category}}',
+        author:      '{{author}}',
+        authorUrl:   '{{authorUrl}}',
+        publishedOn: '{{publishedOn}}',
+        body:        '{{body}}'
+      }
     </script>
     </head>
   <body>
@@ -88,6 +86,7 @@
       </section>
 
       <section id="article-export">
+        <input type="text" id="article-json" name="" value="">
       </section>
 
     </main>
