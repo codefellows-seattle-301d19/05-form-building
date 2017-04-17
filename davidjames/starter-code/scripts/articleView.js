@@ -68,8 +68,8 @@ articleView.setTeasers = function() {
 
 articleView.initNewArticlePage = function() {
   $('.tab-content').show();
-  $('#article-json').on('focus', function(){
-    this.select();
+  $('#article-export').on('click', function(){
+    $(this).select();
   });
   $('#article-info').on('change', this.create);
 };
@@ -98,7 +98,6 @@ articleView.create = function() {
   var renderedHtml = renderFunc(newArticle);
   $('#articles').append(renderedHtml);
 
-  // TODO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
